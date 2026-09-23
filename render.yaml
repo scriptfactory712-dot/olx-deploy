@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: olx-monitor
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -u olx_monitor.py"
+    healthCheckPath: /
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: CHAT_ID
+        sync: false
+      - key: CHECK_INTERVAL
+        value: 60
+      - key: HEARTBEAT_EVERY
+        value: 60
+      - key: PAGES
+        value: 2
+      - key: JUICY_TOP
+        value: 5
+      - key: USD_MIN
+        value: 0
+      - key: USD_MAX
+        value: 999999999
+      - key: FULL_SWEEP_EVERY
+        value: 10
